@@ -1,0 +1,22 @@
+Blockly.Blocks['costume'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Change Avatar")
+        .appendField(new Blockly.FieldDropdown([["costume1","cos1"], ["costume2","cos2"]]), "avatar");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.JavaScript['costume'] = function(block) {
+  var dropdown_name = block.getFieldValue('avatar');
+  // TODO: Assemble JavaScript into code variable.
+  if(dropdown_name==='cos1')
+    code=document.getElementById('avatar').src='monkey2.png';
+  else if(dropdown_name==='cos2')
+    code=document.getElementById('avatar').src='monkey1.png';
+  return code;
+};

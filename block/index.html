@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Using Jquery in Blockly</title>
+<style media="screen">
+/*{
+  display: inline-block;
+}*/
+  .transmove{
+        border:1px solid grey;
+        height:480px;
+        width:500px;
+        overflow: auto;
+    }
+    #avatar{
+      padding:100px;
+      /*width:150px;
+      height:150px;*/
+    }
+    #code_block{
+      border: 1px solid grey;
+    }
+
+</style>
+</head>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="blockly_compressed.js" charset="utf-8"></script>
+<script src="blocks_compressed.js" charset="utf-8"></script>
+<script src="javascript_compressed.js" charset="utf-8"></script>
+<script src="msg/js/en.js" charset="utf-8"></script>
+<script src="custom_morph.js" charset="utf-8"></script>
+<body>
+
+
+  <p><button onclick="runcode()">Run Javascript</button></p>
+    <div class="blockdiv">
+      <div id="blocklyDiv" style="height: 480px; width: 500px;"></div>
+      <xml id="toolbox" style="display: none">
+        <category name="custom">
+          <block type="Steps" ></block>
+          <block type="xrotate"></block>
+          <block type="costume"></block>
+        </category>
+      </xml>
+    </div>
+    <div class="transmove">
+      <img src="monkey1.png" id="avatar" alt="monkey1.jpeg">
+    </div>
+
+  <script>
+    var workspace = Blockly.inject('blocklyDiv', {
+        toolbox: document.getElementById('toolbox')
+    });
+
+    function runcode() {
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+	alert(code);
+        document.getElementById('avatar').value = code;
+    }
+    $( function() {
+      $( "#avatar" ).draggable();
+    } );
+</script>
+</body>
+
+</html>

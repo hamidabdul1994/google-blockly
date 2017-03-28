@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Using Jquery in Blockly</title>
+    <style media="screen">
+        /*{
+      display: inline-block;
+    }*/
+
+        .transmove {
+            border: 1px solid grey;
+            height: 480px;
+            width: 500px;
+            overflow: auto;
+        }
+
+        #avatar {
+            padding: 100px;
+            width: 150px;
+            height: 150px;
+        }
+
+        #code_block {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="../blockly_compressed.js" charset="utf-8"></script>
+<script src="../blocks_compressed.js" charset="utf-8"></script>
+<script src="../javascript_compressed.js" charset="utf-8"></script>
+<script src="../msg/js/en.js" charset="utf-8"></script>
+<script src="custom_morph.js" charset="utf-8"></script>
+
+<body>
+
+
+    <!-- <p><button onclick="runcode()">Run Javascript</button></p> -->
+    <div class="blockdiv">
+        <div id="blocklyDiv" style="height: 480px; width: 500px;"></div>
+        <xml id="toolbox" style="display: none">
+            <category name="custom">
+                <block type="costume"></block>
+            </category>
+        </xml>
+    </div>
+    <div class="transmove">
+        <img src="monkey1.png" id="avatar" alt="monkey">
+    </div>
+
+    <!-- <img src="C:\Users\Next6\Desktop\Amit\goofy the walker.jpg" id="goofy" alt="goofy.jpg"> -->
+
+    <script>
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox')
+        });
+
+        $("block").click(function () {
+          console.log("code running");
+          runcode();
+        });
+
+        function runcode() {
+            console.log("hello");
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            document.getElementById('avatar').value = code;
+        }
+    </script>
+</body>
+
+</html>
